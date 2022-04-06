@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/Minigame/DishMinigame/DishMinigame.gd" type="Script" id=4]
+[ext_resource path="res://scenes/Minigame/DishMinigame/bubble.png" type="Texture" id=5]
+
+[node name="DishMinigame" type="Node2D"]
+script = ExtResource( 4 )
+difficulty = 4
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 400 )
+amount = 32
+lifetime = 4.0
+preprocess = 4.0
+randomness = 0.5
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 512, 1 )
+gravity = Vector2( 0, -98 )
+angular_velocity = 90.0
+angular_velocity_random = 1.0
+scale_amount = 0.1
+scale_amount_random = 0.1
+
+[node name="Plates" type="Node2D" parent="."]
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( -512, 0 )
+
+[node name="Cleaning" type="Position2D" parent="."]
+
+[node name="Exit" type="Position2D" parent="."]
+position = Vector2( 512, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true

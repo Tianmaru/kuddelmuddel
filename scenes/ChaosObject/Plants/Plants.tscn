@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/ChaosObject/ChaosObject.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ChaosObject/Plants/Pflanzen_01_Cylinder197.mesh" type="ArrayMesh" id=6]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.1, 0.1, 0.4 )
+
+[node name="Plants" type="Area" groups=["chaos"]]
+script = ExtResource( 2 )
+chaos_level = 4
+meshes = [ "res://scenes/ChaosObject/Plants/Pflanzen_01_Cylinder197.mesh", "res://scenes/ChaosObject/Plants/Pflanzen_02_Cylinder233.mesh", "res://scenes/ChaosObject/Plants/Pflanzen_03_Cylinder278.mesh", "res://scenes/ChaosObject/Plants/Pflanzen_04_Cylinder327.mesh", "res://scenes/ChaosObject/Plants/Pflanzen_05_Cylinder378.mesh" ]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
+shape = SubResource( 1 )

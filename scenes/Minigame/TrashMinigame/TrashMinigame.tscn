@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Minigame/TrashMinigame/TrashMinigame.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Minigame/TrashMinigame/trashcan.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 562, 50 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 50, 350 )
+
+[node name="TrashMinigame" type="Node2D"]
+script = ExtResource( 1 )
+difficulty = 4
+
+[node name="Spawn" type="Position2D" parent="."]
+position = Vector2( -350, 200 )
+
+[node name="TrashCan" type="StaticBody2D" parent="."]
+position = Vector2( 316, 104 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="TrashCan"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrashCan"]
+polygon = PoolVector2Array( -145, -156, -80, 157, 105, 158, 169, -156, 148, -164, 93, 125, -72, 123, -124, -162 )
+
+[node name="TrashZone" type="Area2D" parent="TrashCan"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrashCan/TrashZone"]
+polygon = PoolVector2Array( -119, -134, -71, 123, 91, 124, 143, -134 )
+
+[node name="Wall" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Top" type="CollisionShape2D" parent="Wall"]
+position = Vector2( 0, -300 )
+shape = SubResource( 2 )
+
+[node name="Bottom" type="CollisionShape2D" parent="Wall"]
+position = Vector2( 0, 300 )
+shape = SubResource( 2 )
+
+[node name="Left" type="CollisionShape2D" parent="Wall"]
+position = Vector2( -512, 0 )
+shape = SubResource( 3 )
+
+[node name="Right" type="CollisionShape2D" parent="Wall"]
+position = Vector2( 512, 0 )
+shape = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[connection signal="body_entered" from="TrashCan/TrashZone" to="." method="_on_TrashZone_body_entered"]

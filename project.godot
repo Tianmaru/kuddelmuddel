@@ -1,0 +1,68 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Area",
+"class": "ChaosObject",
+"language": "GDScript",
+"path": "res://scenes/ChaosObject/ChaosObject.gd"
+}, {
+"base": "Node2D",
+"class": "Minigame",
+"language": "GDScript",
+"path": "res://scenes/Minigame/Minigame.gd"
+}, {
+"base": "Node2D",
+"class": "Plate",
+"language": "GDScript",
+"path": "res://scenes/Minigame/DishMinigame/Plate/Plate.gd"
+}, {
+"base": "Minigame",
+"class": "TrashMinigame",
+"language": "GDScript",
+"path": "res://scenes/Minigame/TrashMinigame/TrashMinigame.gd"
+} ]
+_global_script_class_icons={
+"ChaosObject": "",
+"Minigame": "",
+"Plate": "",
+"TrashMinigame": ""
+}
+
+[application]
+
+config/name="Kuddelmuddel"
+run/main_scene="res://scenes/Title/Title.tscn"
+config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[gui]
+
+theme/custom_font="res://fonts/Archivo_Black/ArchivoBlack_Normal.tres"
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
