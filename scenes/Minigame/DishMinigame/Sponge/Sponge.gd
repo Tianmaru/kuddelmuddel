@@ -17,7 +17,6 @@ func _unhandled_input(event):
 
 func _physics_process(delta):
 	var velocity = mouse_delta * SPEED
-	print(velocity)
 	sponge.move_and_slide(velocity)
 	sponge.rotation = position.direction_to(sponge.position).angle()
 	var clamped_pos = position.direction_to(sponge.position).normalized() * distance
