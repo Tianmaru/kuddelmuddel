@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/room/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ChaosObject/Plants/Plants.tscn" type="PackedScene" id=2]
@@ -6,11 +6,12 @@
 [ext_resource path="res://scenes/ChaosObject/Trashcan/Trashcan.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ChaosObject/Paperwork/Paperwork.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ChaosObject/Dishes/Dishes.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/ChaosObject/Books_in_Shelve/Books.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ChaosObject/Books/Books.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Clock/Clock.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/main/kuddelmuddel.ogg" type="AudioStream" id=9]
 [ext_resource path="res://fonts/Archivo_Black/ArchivoBlack_Huge.tres" type="DynamicFont" id=10]
 [ext_resource path="res://scenes/main/ViewportContainer.gd" type="Script" id=11]
+[ext_resource path="res://scenes/ChaosObject/Clothes/Clothes.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Environment" id=1]
 background_mode = 1
@@ -162,8 +163,6 @@ tracks/1/keys = {
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0649414, 0.416861, 0.0649414 )
 script = ExtResource( 3 )
 
-[node name="Spatial" type="Spatial" parent="."]
-
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.685921, -0.324014, 0.651558, 0, 0.895396, 0.445272, -0.727676, -0.305421, 0.614171, 7.35889, 4.76353, 7.02919 )
 environment = SubResource( 1 )
@@ -176,29 +175,7 @@ __meta__ = {
 
 [node name="Room" parent="." instance=ExtResource( 1 )]
 
-[node name="ClothPiles" type="Spatial" parent="."]
-__meta__ = {
-"_edit_group_": true,
-"_edit_lock_": true
-}
-
-[node name="Position3D" type="Position3D" parent="ClothPiles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36222, -0.708283, 1.09449 )
-
-[node name="Position3D2" type="Position3D" parent="ClothPiles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314108, -1.01623, 1.10862 )
-
-[node name="Position3D3" type="Position3D" parent="ClothPiles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677489, -1.01623, 1.10862 )
-
-[node name="Position3D4" type="Position3D" parent="ClothPiles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.702124, -1.01623, 0.190928 )
-
-[node name="Position3D5" type="Position3D" parent="ClothPiles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.234041, -1.01623, 0.190928 )
-
-[node name="Position3D6" type="Position3D" parent="ClothPiles"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419717, -1.01623, -1.22091 )
+[node name="Clothes" parent="." instance=ExtResource( 12 )]
 
 [node name="Clock" parent="." instance=ExtResource( 8 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96829, 0.0363536, 0.238895 )
@@ -207,17 +184,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96829, 0.0363536, 0.238895 
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2032, -0.47379, 0.245138 )
 
 [node name="Books" parent="." instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9398, -0.0997759, -0.956816 )
 
 [node name="Trashcan" parent="." instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70177, -1.02191, 0.185243 )
-chaos_level = 4
 
 [node name="Paperwork" parent="." instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69967, -0.578373, -0.375962 )
 
 [node name="Dishes" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72697, -0.555544, -1.41877 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52533, -0.555544, -1.41877 )
 
 [node name="MinigameOverlay" type="Control" parent="."]
 visible = false
@@ -225,16 +200,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ViewportContainer" type="ViewportContainer" parent="MinigameOverlay"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -512.0
-margin_top = -300.0
-margin_right = 512.0
-margin_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
 script = ExtResource( 11 )
 
 [node name="Viewport" type="Viewport" parent="MinigameOverlay/ViewportContainer"]
@@ -307,9 +275,9 @@ volume_db = -6.0
 autoplay = true
 
 [connection signal="end_of_day" from="Clock" to="." method="_on_Clock_end_of_day"]
-[connection signal="clicked" from="Plants" to="." method="_on_Plants_clicked"]
-[connection signal="clicked" from="Books" to="." method="_on_Books_clicked"]
-[connection signal="clicked" from="Trashcan" to="." method="_on_Trashcan_clicked"]
-[connection signal="clicked" from="Paperwork" to="." method="_on_Paperwork_clicked"]
-[connection signal="clicked" from="Dishes" to="." method="_on_Dishes_clicked"]
+[connection signal="activated" from="Plants" to="." method="_on_Plants_activated"]
+[connection signal="activated" from="Books" to="." method="_on_Books_activated"]
+[connection signal="activated" from="Trashcan" to="." method="_on_Trashcan_activated"]
+[connection signal="activated" from="Paperwork" to="." method="_on_Paperwork_activated"]
+[connection signal="activated" from="Dishes" to="." method="_on_Dishes_activated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -3,13 +3,13 @@
 [ext_resource path="res://scenes/room/Room.tscn" type="PackedScene" id=1]
 [ext_resource path="res://fonts/Archivo_Black/ArchivoBlack_Huge.tres" type="DynamicFont" id=2]
 [ext_resource path="res://fonts/Archivo_Black/ArchivoBlack_Small.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scenes/ChaosObject/Books_in_Shelve/Books.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/ChaosObject/Books/Books.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ChaosObject/Dishes/Dishes.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ChaosObject/Paperwork/Paperwork.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ChaosObject/Trashcan/Trashcan.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Clock/Clock.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/ChaosObject/Plants/Plants.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/shirt/shirt.png" type="Texture" id=10]
+[ext_resource path="res://scenes/ChaosObject/Clothes/Clothing/shirt.png" type="Texture" id=10]
 [ext_resource path="res://scenes/Title/Title.gd" type="Script" id=11]
 [ext_resource path="res://scenes/Title/logo.png" type="Texture" id=12]
 
@@ -148,10 +148,8 @@ autostart = true
 
 [node name="Plants" parent="Spatial" instance=ExtResource( 9 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2032, -0.47379, 0.245138 )
-chaos_level = 4
 
 [node name="Books" parent="Spatial" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9398, -0.0997759, -0.956816 )
 chaos_level = 4
 
 [node name="Trashcan" parent="Spatial" instance=ExtResource( 7 )]
@@ -160,11 +158,9 @@ chaos_level = 4
 
 [node name="Paperwork" parent="Spatial" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69967, -0.578373, -0.375962 )
-chaos_level = 4
 
 [node name="Dishes" parent="Spatial" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.72697, -0.555544, -1.41877 )
-chaos_level = 4
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52533, -0.555544, -1.41877 )
 
 [node name="Shirts" type="Spatial" parent="Spatial"]
 

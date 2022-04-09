@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/books_02.glb-ca7ec6048b2989da05ec641e303d0883.scn"
+path="res://.import/books_05.glb-8cad72c4f50451af5e4ed9808014bb62.scn"
 
 [deps]
 
-source_file="res://scenes/Books/books_02.glb"
-dest_files=[ "res://.import/books_02.glb-ca7ec6048b2989da05ec641e303d0883.scn" ]
+source_file="res://scenes/ChaosObject/Books/scattered/books_05.glb"
+dest_files=[ "res://.import/books_05.glb-8cad72c4f50451af5e4ed9808014bb62.scn" ]
 
 [params]
 
@@ -16,7 +16,7 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-nodes/use_legacy_names=false
+nodes/use_legacy_names=true
 materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true

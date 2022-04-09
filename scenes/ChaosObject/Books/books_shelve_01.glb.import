@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/books_shelve_02.glb-dd62d4dcfc8f6d8389da91df6aba85c5.scn"
+path="res://.import/books_shelve_01.glb-0965e44ec5961c71976b4448776ed91f.scn"
 
 [deps]
 
-source_file="res://scenes/ChaosObject/Books_in_Shelve/books_shelve_02.glb"
-dest_files=[ "res://.import/books_shelve_02.glb-dd62d4dcfc8f6d8389da91df6aba85c5.scn" ]
+source_file="res://scenes/ChaosObject/Books/books_shelve_01.glb"
+dest_files=[ "res://.import/books_shelve_01.glb-0965e44ec5961c71976b4448776ed91f.scn" ]
 
 [params]
 

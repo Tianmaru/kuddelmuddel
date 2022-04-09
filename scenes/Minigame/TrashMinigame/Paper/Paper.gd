@@ -23,7 +23,6 @@ func _unhandled_input(event):
 		mouse_pos =  get_canvas_transform().affine_inverse() * event.position # funktioniert normal, aber nimmt kein scaling von fullscreen
 		#mouse_pos =  get_viewport_transform().affine_inverse() * (get_canvas_transform().affine_inverse() * event.global_position) # funktioniert, aber um Kamera verschoben?
 		#mouse_pos =  get_canvas_transform().affine_inverse() * (get_viewport_transform().affine_inverse() * event.global_position)
-		print(mouse_pos)
 
 func _integrate_forces(state):
 	if held:

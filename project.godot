@@ -9,10 +9,15 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area",
+"base": "Spatial",
 "class": "ChaosObject",
 "language": "GDScript",
 "path": "res://scenes/ChaosObject/ChaosObject.gd"
+}, {
+"base": "ChaosObject",
+"class": "ClickChaos",
+"language": "GDScript",
+"path": "res://scenes/ChaosObject/ClickChaos.gd"
 }, {
 "base": "Node2D",
 "class": "Minigame",
@@ -31,6 +36,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "ChaosObject": "",
+"ClickChaos": "",
 "Minigame": "",
 "Plate": "",
 "TrashMinigame": ""

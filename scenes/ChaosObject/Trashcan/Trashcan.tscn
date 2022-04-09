@@ -1,21 +1,58 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://scenes/ChaosObject/Trashcan/trashcan_04_Cylinder012.mesh" type="ArrayMesh" id=1]
+[ext_resource path="res://scenes/ChaosObject/Trashcan/trashcan_01_Cylinder012.mesh" type="ArrayMesh" id=2]
 [ext_resource path="res://scenes/ChaosObject/Trashcan/trashcan_05_Cylinder012.mesh" type="ArrayMesh" id=3]
-[ext_resource path="res://scenes/ChaosObject/ChaosObject.gd" type="Script" id=4]
+[ext_resource path="res://scenes/ChaosObject/ClickChaos.gd" type="Script" id=4]
+[ext_resource path="res://scenes/ChaosObject/Trashcan/trashcan_03_Cylinder012.mesh" type="ArrayMesh" id=5]
+[ext_resource path="res://scenes/ChaosObject/Trashcan/trashcan_02_Cylinder012.mesh" type="ArrayMesh" id=6]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.2, 0.2, 0.2 )
 
-[node name="Trashcan" type="Area" groups=["chaos"]]
+[node name="Trashcan" type="Spatial" groups=["chaos"]]
 script = ExtResource( 4 )
-meshes = [ "res://scenes/ChaosObject/Trashcan/trashcan_01_Cylinder012.mesh", "res://scenes/ChaosObject/Trashcan/trashcan_02_Cylinder012.mesh", "res://scenes/ChaosObject/Trashcan/trashcan_03_Cylinder012.mesh", "res://scenes/ChaosObject/Trashcan/trashcan_04_Cylinder012.mesh", "res://scenes/ChaosObject/Trashcan/trashcan_05_Cylinder012.mesh" ]
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+shape = SubResource( 1 )
+
+[node name="Meshes" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.068, 0.08, 0.021 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Meshes"]
+mesh = ExtResource( 2 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Meshes"]
+visible = false
+mesh = ExtResource( 6 )
+material/0 = null
+material/1 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="Meshes"]
+visible = false
+mesh = ExtResource( 5 )
+material/0 = null
+material/1 = null
+
+[node name="MeshInstance4" type="MeshInstance" parent="Meshes"]
+visible = false
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null
+
+[node name="MeshInstance5" type="MeshInstance" parent="Meshes"]
+visible = false
 mesh = ExtResource( 3 )
 material/0 = null
 material/1 = null
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
-shape = SubResource( 1 )
+[connection signal="input_event" from="Area" to="." method="_on_Area_input_event"]
+[connection signal="mouse_entered" from="Area" to="." method="_on_Area_mouse_entered"]
+[connection signal="mouse_exited" from="Area" to="." method="_on_Area_mouse_exited"]

@@ -12,16 +12,14 @@ var minigame_work = preload("res://scenes/Minigame/WorkMinigame/WorkMinigame.tsc
 var minigame_trash = preload("res://scenes/Minigame/TrashMinigame/TrashMinigame.tscn")
 var minigame_source : ChaosObject
 
-var shirt_scn = preload("res://scenes/shirt/Shirt.tscn")
-
 onready var plants = $Plants
 onready var books = $Books
+onready var clothes = $Clothes
 onready var trashcan = $Trashcan
 onready var paperwork = $Paperwork
 onready var dishes = $Dishes
 onready var minigame_overlay = $MinigameOverlay
 onready var viewport = $MinigameOverlay/ViewportContainer/Viewport
-onready var cloth_piles = $ClothPiles
 onready var clock = $Clock
 onready var anim = $AnimationPlayer
 onready var day_label = $Transition/VBoxContainer/HBoxContainer/DayLabel
@@ -34,25 +32,7 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):
-		plants.set_chaos_level(plants.chaos_level + 1) 
-
-func _on_Plants_clicked():
-	plants.decrease_chaos()
-
-func _on_Trashcan_clicked():
-	minigame_source = trashcan
-	start_minigame(minigame_trash)
-
-func _on_Paperwork_clicked():
-	minigame_source = paperwork
-	start_minigame(minigame_work)
-
-func _on_Dishes_clicked():
-	minigame_source = dishes
-	start_minigame(minigame_dishes)
-
-func _on_Books_clicked():
-	books.decrease_chaos()
+		plants.set_chaos_level(plants.chaos_level + 1)
 
 func start_minigame(scn):
 	if minigame:
@@ -74,18 +54,6 @@ func _on_minigame_over():
 	minigame_source.set_chaos_level(0)
 	end_minigame()
 
-func spawn_shirt():
-	var pile = cloth_piles.get_children()[randi() % cloth_piles.get_child_count()]
-	var shirt = shirt_scn.instance()
-	shirt.rotate_y(randf() * 2 * PI)
-	var scale = rand_range(0.8, 1.2)
-	shirt.scale = shirt.scale * Vector3(scale, 1, scale)
-	var offset = Vector3()
-	offset.x = rand_range(-0.25, 0.25)
-	offset.z = rand_range(-0.25, 0.25)
-	shirt.transform.origin += offset
-	pile.add_child(shirt)
-
 func _on_Clock_end_of_day():
 	clock.stop()
 	end_minigame()
@@ -102,23 +70,15 @@ func next_day():
 	anim.play("fade_in")
 
 func make_mess():
-	var chaos_objects = [books, plants, trashcan, dishes, paperwork]
+	var chaos_objects = [books, plants, trashcan, dishes, paperwork, clothes]
 	var tolerable_objects = []
 	for x in chaos_objects:
-		if x.chaos_level < 4:
+		if not x.is_messy():
 			tolerable_objects.append(x)
-	if tolerable_objects.empty() and not len(get_tree().get_nodes_in_group("shirt")) < MAX_SHIRTS:
+	if not tolerable_objects.empty():
+		tolerable_objects[randi() % len(tolerable_objects)].increase_chaos()
+	else:
 		game_over()
-	var mess_mode = 0
-	if len(get_tree().get_nodes_in_group("shirt")) < MAX_SHIRTS:
-		mess_mode = randi() % (len(chaos_objects) + 1)
-	else:
-		mess_mode = randi() % len(chaos_objects)
-	if mess_mode < len(chaos_objects):
-		chaos_objects[mess_mode].increase_chaos()
-	else:
-		for i in range(SHIRTS_PER_CHAOS):
-			spawn_shirt()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade_out":
@@ -130,3 +90,21 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func game_over():
 	get_tree().change_scene("res://scenes/Gameover/Gameover.tscn")
+
+func _on_Plants_activated():
+	plants.decrease_chaos()
+
+func _on_Books_activated():
+	books.decrease_chaos()
+
+func _on_Trashcan_activated():
+	minigame_source = trashcan
+	start_minigame(minigame_trash)
+
+func _on_Paperwork_activated():
+	minigame_source = paperwork
+	start_minigame(minigame_work)
+
+func _on_Dishes_activated():
+	minigame_source = dishes
+	start_minigame(minigame_dishes)

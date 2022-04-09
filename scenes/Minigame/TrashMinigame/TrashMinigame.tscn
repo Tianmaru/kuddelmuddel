@@ -14,10 +14,10 @@ script = ExtResource( 1 )
 difficulty = 4
 
 [node name="Spawn" type="Position2D" parent="."]
-position = Vector2( -350, 200 )
+position = Vector2( 200, 500 )
 
 [node name="TrashCan" type="StaticBody2D" parent="."]
-position = Vector2( 316, 104 )
+position = Vector2( 814, 400 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -27,16 +27,19 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrashCan"]
-polygon = PoolVector2Array( -145, -156, -80, 157, 105, 158, 169, -156, 148, -164, 93, 125, -72, 123, -124, -162 )
+position = Vector2( -1.541, 0 )
+polygon = PoolVector2Array( -144.459, -150, -93.459, 155, 92.541, 158, 150.541, -150, 138.541, -155, 81.541, 137, -81.459, 135, -130.459, -156 )
 
 [node name="TrashZone" type="Area2D" parent="TrashCan"]
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrashCan/TrashZone"]
-polygon = PoolVector2Array( -119, -134, -71, 123, 91, 124, 143, -134 )
+polygon = PoolVector2Array( -128, -134, -82, 135, 79, 136, 131, -134 )
 
 [node name="Wall" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2( 512, 300 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -56,8 +59,5 @@ shape = SubResource( 3 )
 [node name="Right" type="CollisionShape2D" parent="Wall"]
 position = Vector2( 512, 0 )
 shape = SubResource( 3 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
 
 [connection signal="body_entered" from="TrashCan/TrashZone" to="." method="_on_TrashZone_body_entered"]

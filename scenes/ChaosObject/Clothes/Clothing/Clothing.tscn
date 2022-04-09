@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/ChaosObject/Clothes/Clothing/Clothing.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ChaosObject/Clothes/Clothing/shirt.png" type="Texture" id=2]
+[ext_resource path="res://scenes/ChaosObject/Clothes/Clothing/sock.png" type="Texture" id=3]
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.15, 0.01, 0.25 )
+
+[node name="Shirt" type="Area" groups=["shirt"]]
+script = ExtResource( 1 )
+cloth_colors = [ Color( 0.905882, 0.501961, 0.117647, 1 ), Color( 0.447059, 0.905882, 0.392157, 1 ), Color( 0.843137, 0.905882, 0.133333, 1 ), Color( 0.0313726, 0.301961, 0.756863, 1 ), Color( 0.635294, 0.0156863, 0.905882, 1 ), Color( 0.905882, 0, 0.0588235, 1 ) ]
+pieces = [ ExtResource( 2 ), ExtResource( 3 ) ]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+pixel_size = 0.001
+axis = 1
+shaded = true
+texture = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.555512, 0, -0.831508, 0, 1, 0, 0.831508, 0, 0.555512, -0.0136446, 0, -0.0101849 )
+shape = SubResource( 2 )

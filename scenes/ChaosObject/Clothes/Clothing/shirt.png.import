@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/shirt.png-ce07ec5c8aa5fc3566861d05e1ec1f4b.s3tc.stex"
-path.etc="res://.import/shirt.png-ce07ec5c8aa5fc3566861d05e1ec1f4b.etc.stex"
+path.s3tc="res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.s3tc.stex"
+path.etc="res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.etc.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/shirt/shirt.png"
-dest_files=[ "res://.import/shirt.png-ce07ec5c8aa5fc3566861d05e1ec1f4b.s3tc.stex", "res://.import/shirt.png-ce07ec5c8aa5fc3566861d05e1ec1f4b.etc.stex" ]
+source_file="res://scenes/ChaosObject/Clothes/Clothing/shirt.png"
+dest_files=[ "res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.s3tc.stex", "res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.etc.stex" ]
 
 [params]
 

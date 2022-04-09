@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/books_03.glb-5c5da4544b6bfc1aed6a35e10f268071.scn"
+path="res://.import/books_shelve_05.glb-fc7b2cd923a803cb5c407173bd221d0c.scn"
 
 [deps]
 
-source_file="res://scenes/Books/books_03.glb"
-dest_files=[ "res://.import/books_03.glb-5c5da4544b6bfc1aed6a35e10f268071.scn" ]
+source_file="res://scenes/ChaosObject/Books/books_shelve_05.glb"
+dest_files=[ "res://.import/books_shelve_05.glb-fc7b2cd923a803cb5c407173bd221d0c.scn" ]
 
 [params]
 
@@ -16,14 +16,14 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-nodes/use_legacy_names=false
+nodes/use_legacy_names=true
 materials/location=1
-materials/storage=1
-materials/keep_on_reimport=true
+materials/storage=0
+materials/keep_on_reimport=false
 meshes/octahedral_compression=true
 meshes/compress=4286
 meshes/ensure_tangents=true
-meshes/storage=0
+meshes/storage=1
 meshes/light_baking=0
 meshes/lightmap_texel_size=0.1
 skins/use_named_skins=true

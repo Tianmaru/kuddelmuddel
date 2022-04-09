@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ChaosObject/Clothes/Shirts.gd" type="Script" id=1]
+
+[node name="Clothes" type="Spatial"]
+script = ExtResource( 1 )
+MAX_CHAOS = 12
+
+[node name="Piles" type="Spatial" parent="."]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Position3D" type="Position3D" parent="Piles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.36222, -0.708283, 1.09449 )
+
+[node name="Position3D2" type="Position3D" parent="Piles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.314108, -1.01623, 1.10862 )
+
+[node name="Position3D3" type="Position3D" parent="Piles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.677489, -1.01623, 1.10862 )
+
+[node name="Position3D4" type="Position3D" parent="Piles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.702124, -1.01623, 0.190928 )
+
+[node name="Position3D5" type="Position3D" parent="Piles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.234041, -1.01623, 0.190928 )
+
+[node name="Position3D6" type="Position3D" parent="Piles"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419717, -1.01623, -1.22091 )
