@@ -2,28 +2,26 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.s3tc.stex"
-path.etc="res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.etc.stex"
+path="res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://scenes/ChaosObject/Clothes/Clothing/shirt.png"
-dest_files=[ "res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.s3tc.stex", "res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.etc.stex" ]
+dest_files=[ "res://.import/shirt.png-0273542c218f86b7d5941ec7062d6362.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

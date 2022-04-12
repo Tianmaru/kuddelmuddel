@@ -1,7 +1,7 @@
 extends Minigame
 
 const SPEED = 100
-const drag = 0.9
+const drag = 0.01
 
 var mouse_delta = Vector2()
 var active_doc
@@ -9,6 +9,8 @@ var document_scn = preload("res://scenes/Minigame/WorkMinigame/Document/Document
 var documents = []
 
 onready var documents_node = $Documents
+onready var camera = $Camera2D
+onready var penalty_timer = $PenaltyTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,16 +25,17 @@ func _ready():
 	documents = documents_node.get_children()
 	get_next_doc()
 
-func _input(event):
-	var unclicked = event is InputEventMouseButton and event.button_index == BUTTON_LEFT and not event.is_pressed()
-	var untouched = event is InputEventScreenTouch and not event.is_pressed()
-	if event is InputEventMouseMotion or event is InputEventScreenDrag:
+func _unhandled_input(event):
+	# var unclicked = event is InputEventMouseButton and event.button_index == BUTTON_LEFT and not event.is_pressed()
+	#var untouched = event is InputEventScreenTouch and not event.is_pressed()
+	if event is InputEventMouseMotion:
 		mouse_delta = event.relative
 
-func _process(delta):
+func _physics_process(delta):
 	if active_doc:
 		active_doc.position.x += mouse_delta.x * delta * SPEED
-		mouse_delta *= drag
+		active_doc.position.x = clamp(active_doc.position.x, -400, 400)
+		mouse_delta *= pow(drag, delta)
 
 func _on_ApprovedArea_area_entered(area):
 	next_doc(active_doc.approved)
@@ -43,14 +46,23 @@ func _on_RejectedArea_area_entered(area):
 func next_doc(was_correct):
 	if was_correct:
 		active_doc.queue_free()
+		active_doc = null
 		if len(documents) == 0:
 			emit_signal("minigame_over")
 			set_process(false)
 		else:
 			get_next_doc()
 	else:
+		camera.shake()
 		active_doc.position = documents_node.position
+		mouse_delta = Vector2()
+		set_physics_process(false)
+		penalty_timer.start()
 
 func get_next_doc():
 	active_doc = documents.pop_back()
+	mouse_delta = Vector2()
+
+func _on_PenaltyTimer_timeout():
+	set_physics_process(true)
 	mouse_delta = Vector2()

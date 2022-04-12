@@ -2,28 +2,26 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/sock.png-81d34152ca0e8b609826f2d4d088ff9e.s3tc.stex"
-path.etc="res://.import/sock.png-81d34152ca0e8b609826f2d4d088ff9e.etc.stex"
+path="res://.import/sock.png-81d34152ca0e8b609826f2d4d088ff9e.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://scenes/ChaosObject/Clothes/Clothing/sock.png"
-dest_files=[ "res://.import/sock.png-81d34152ca0e8b609826f2d4d088ff9e.s3tc.stex", "res://.import/sock.png-81d34152ca0e8b609826f2d4d088ff9e.etc.stex" ]
+dest_files=[ "res://.import/sock.png-81d34152ca0e8b609826f2d4d088ff9e.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
 flags/filter=true
-flags/mipmaps=true
+flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true

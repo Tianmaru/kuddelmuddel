@@ -21,20 +21,24 @@ var i_plate = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	set_process(false)
 	for i in range(difficulty):
 		var plate = plate_scn.instance()
 		plates_node.add_child(plate)
 		plate.position = spawn.position + i * OFFSET
-		plate.set_cleaning(false)
 	plates = plates_node.get_children()
 	next_plate()
 
+func _process(delta):
+	if active_plate and sponge:
+		active_plate.clean(sponge.angle)
+
 func next_plate():
 	if active_plate:
-		active_plate.set_cleaning(false)
 		if sponge:
+			sponge.disconnect("cleaning_finished", self, "_on_plate_cleaned")
 			sponge.queue_free()
-		active_plate.disconnect("cleaned", self, "_on_plate_cleaned")
+			sponge = null
 		active_plate.move_to(exit.position - i_plate * OFFSET, DURATION)
 		i_plate += 1
 		if len(plates) == 0:
@@ -43,15 +47,17 @@ func next_plate():
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			return
 	active_plate = plates.pop_back()
-	active_plate.connect("cleaned", self, "_on_plate_cleaned")
 	active_plate.move_to(cleaning.position, DURATION)
 	yield(active_plate, "moved")
 	start_cleaning()
 
 func start_cleaning():
-	active_plate.set_cleaning(true)
 	sponge = sponge_scn.instance()
 	add_child(sponge)
+	sponge.connect("cleaning_finished", self, "_on_plate_cleaned")
+	set_process(true)
 
 func _on_plate_cleaned():
+	set_process(false)
+	active_plate.set_cleaned()
 	next_plate()

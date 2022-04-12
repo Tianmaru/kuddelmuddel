@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://scenes/Minigame/DishMinigame/bubble.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Minigame/DishMinigame/DishMinigame.gd" type="Script" id=4]
-[ext_resource path="res://scenes/Minigame/DishMinigame/bubble.png" type="Texture" id=5]
 
 [node name="DishMinigame" type="Node2D"]
 script = ExtResource( 4 )
@@ -13,7 +13,7 @@ amount = 32
 lifetime = 4.0
 preprocess = 4.0
 randomness = 0.5
-texture = ExtResource( 5 )
+texture = ExtResource( 2 )
 emission_shape = 2
 emission_rect_extents = Vector2( 512, 1 )
 gravity = Vector2( 0, -98 )

@@ -11,22 +11,23 @@ float cross2(vec2 a, vec2 b) {
 	return a.x * b.y - a.y * b.x;
 }
 
+float vangle(vec2 a, vec2 b) {
+	return atan(cross2(a,b), dot(a,b));
+}
+
 void fragment() {
 	COLOR.rgba = texture(TEXTURE, UV);
-	float angle = atan(-(UV.y - CENTER.y), UV.x - CENTER.x);
+	float angle = atan(-(UV.y - CENTER.y), UV.x - CENTER.x) + 3.0 * PI/2.0;
 	float rad_start = radians(cutoff_start);
 	float rad_end = radians(cutoff_end);
 	vec2 dir_start = vec2(cos(rad_start), sin(rad_start));
 	vec2 dir_end = vec2(cos(rad_end), sin(rad_end));
 	vec2 dir_angle = vec2(cos(angle), sin(angle));
-	float start_to_end = acos(dot(dir_start, dir_end));
-	start_to_end *= sign(cross2(dir_start, dir_end));
+	float start_to_end = vangle(dir_start, dir_end);
 	start_to_end = mod(start_to_end + 2.0 * PI, 2.0 * PI);
-	float start_to_angle = acos(dot(dir_start, dir_angle));
-	start_to_angle *= sign(cross2(dir_start, dir_angle));
+	float start_to_angle = vangle(dir_start, dir_angle);
 	start_to_angle = mod(start_to_angle + 2.0 * PI, 2.0 * PI);
-	float angle_to_end = acos(dot(dir_angle, dir_end));
-	angle_to_end *= sign(cross2(dir_angle, dir_end));
+	float angle_to_end = vangle(dir_angle, dir_end);
 	angle_to_end = mod(angle_to_end + 2.0 * PI, 2.0 * PI);
 	if (!(start_to_angle < start_to_end)) {
 		//float t = min(start_to_angle, angle_to_end)
